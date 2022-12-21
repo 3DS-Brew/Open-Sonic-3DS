@@ -35,7 +35,6 @@ SOURCES = \
       src/core/util.h \
       src/core/video.h \
       src/core/v2d.h \
-
       src/scenes/util/editorgrp.h \
       src/scenes/util/grouptree.h \
       src/scenes/confirmbox.h \
@@ -51,7 +50,6 @@ SOURCES = \
       src/scenes/quest.h \
       src/scenes/questover.h \
       src/scenes/stageselect.h \
-
       src/entities/object_decorators/base/objectbasicmachine.h \
       src/entities/object_decorators/base/objectdecorator.h \
       src/entities/object_decorators/base/objectmachine.h \
@@ -87,7 +85,6 @@ SOURCES = \
       src/entities/object_decorators/dialog_box.h \
       src/entities/object_decorators/walk.h \
       src/entities/object_decorators/observe_player.h \
-
       src/entities/items/util/itemutil.h \
       src/entities/items/animal.h \
       src/entities/items/animalprison.h \
@@ -114,7 +111,6 @@ SOURCES = \
       src/entities/items/spring.h \
       src/entities/items/switch.h \
       src/entities/items/teleporter.h \
-
       src/entities/actor.h \
       src/entities/background.h \
       src/entities/boss.h \
@@ -126,7 +122,6 @@ SOURCES = \
       src/entities/font.h \
       src/entities/item.h \
       src/entities/player.h \
-
       src/misc/iconwin.rc \
 
 	  
