@@ -3,7 +3,6 @@ ifeq ($(STATIC),1)
   CXXFLAGS_ALL += -static
 endif
 
-CXXFLAGS_ALL += -MMD -MP -MF objects/$*.d $(shell pkg-config --cflags $(PKG_CONFIG_STATIC_FLAG) sdl2 vorbisfile vorbis) $(CXXFLAGS) 
 LDFLAGS_ALL += $(LDFLAGS)
 LIBS_ALL += $(shell pkg-config --libs $(PKG_CONFIG_STATIC_FLAG) sdl2 vorbisfile vorbis) -pthread $(LIBS)
 
@@ -134,23 +133,12 @@ ifeq ($(USE_HW_REN),1)
   LIBS_ALL += -lGL -lGLEW
 endif
 
-OBJECTS = $(SOURCES:%=objects/%.o)
-DEPENDENCIES = $(SOURCES:%=objects/%.d)
-
 all: bin/OpenSonic
 
 include $(wildcard $(DEPENDENCIES))
-
-objects/%.o: %
-	mkdir -p $(@D)
-	$(CXX) $(CXXFLAGS_ALL) -std=c++17 $< -o $@ -c
-
-bin/OpenSonic: $(OBJECTS)
-	mkdir -p $(@D)
-	$(CXX) $(CXXFLAGS_ALL) $(LDFLAGS_ALL) $^ -o $@ $(LIBS_ALL)
 
 install: bin/Sonic
 	install -Dp -m755 bin/OpenSonic $(prefix)/bin/OpenSonic
 
 clean:
-	 rm -r -f bin && rm -r -f objects
+	 rm -r -f bin && rm -r -f
