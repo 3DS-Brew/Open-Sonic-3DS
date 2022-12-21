@@ -132,7 +132,6 @@ SOURCES = \
 	  
 ifeq ($(FORCE_CASE_INSENSITIVE),1)
   CXXFLAGS_ALL += -DFORCE_CASE_INSENSITIVE
-  SOURCES += Nexus/fcaseopen.c
 endif
 
 ifeq ($(USE_HW_REN),1)
@@ -143,7 +142,7 @@ endif
 OBJECTS = $(SOURCES:%=objects/%.o)
 DEPENDENCIES = $(SOURCES:%=objects/%.d)
 
-all: bin/nexus
+all: bin/OpenSonic
 
 include $(wildcard $(DEPENDENCIES))
 
@@ -151,12 +150,12 @@ objects/%.o: %
 	mkdir -p $(@D)
 	$(CXX) $(CXXFLAGS_ALL) -std=c++17 $< -o $@ -c
 
-bin/nexus: $(OBJECTS)
+bin/OpenSonic: $(OBJECTS)
 	mkdir -p $(@D)
 	$(CXX) $(CXXFLAGS_ALL) $(LDFLAGS_ALL) $^ -o $@ $(LIBS_ALL)
 
-install: bin/nexus
-	install -Dp -m755 bin/nexus $(prefix)/bin/nexus
+install: bin/Sonic
+	install -Dp -m755 bin/OpenSonic $(prefix)/bin/OpenSonic
 
 clean:
 	 rm -r -f bin && rm -r -f objects
